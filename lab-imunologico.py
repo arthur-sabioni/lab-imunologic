@@ -56,9 +56,9 @@ def clone_mutate_and_select(df: pd.DataFrame, clone_n, p):
         alpha = np.exp(-p*D)
 
         local_df = pd.DataFrame()
-        local_df['x'] = [0 for x in range(0, clone_n)]
-        local_df['y'] = [0 for x in range(0, clone_n)]
-        local_df['fitness'] = [0 for x in range(0, clone_n)]
+        local_df['x'] = [0.0 for x in range(0, clone_n)]
+        local_df['y'] = [0.0 for x in range(0, clone_n)]
+        local_df['fitness'] = [0.0 for x in range(0, clone_n)]
 
         for it in range(0, clone_n):
 
