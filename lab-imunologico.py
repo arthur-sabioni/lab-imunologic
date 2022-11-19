@@ -82,11 +82,17 @@ def clone_mutate_and_select(df: pd.DataFrame, clone_n, p):
 
 if __name__ == "__main__":
 
+    # Remove annoying pandas warning
+    pd.options.mode.chained_assignment = None 
+
     size = 100
-    generations = 50
+    generations = 5
     clone_n = 5
     p = 5
-    
+
+    # If true, will show a 3D graph at the end of each 5 generations.
+    plot_each_generation = True
+
     population = []
 
     for x in range(0,size):
@@ -94,10 +100,12 @@ if __name__ == "__main__":
 
     for gen in range(0,generations):
 
+        if plot_each_generation and ((gen+1) % 5 == 0 or gen == 0):
+            plot_3d(population)
+
         population_df = fitness(population)
 
         population = clone_mutate_and_select(population_df, clone_n, p)
 
     plot_3d(population)
-    
-    print('test')
+    plt.show()
